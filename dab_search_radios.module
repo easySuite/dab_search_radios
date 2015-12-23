@@ -1,0 +1,12 @@
+<?php
+/**
+ * @file
+ * DAB search radios module functionality.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function dab_search_radios_menu() {
+
+}
