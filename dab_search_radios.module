@@ -8,5 +8,42 @@
  * Implements hook_menu().
  */
 function dab_search_radios_menu() {
+  $items = array();
+  $items['admin/config/ding/dab-search'] = array(
+    'title' => 'DAB Search',
+    'description' => 'Configure where the DAB search should redirect.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('dab_search_radios_settings'),
+    'access arguments' => array('administer site configuration'),
+    'file' => 'dab_search_radios.admin.inc',
+  );
+  return $items;
+}
 
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function dab_search_radios_form_search_block_form_alter(&$form, &$form_state, $form_id) {
+  $tabs = array(
+    'catalogue' => t('Library catalogue'),
+    'international' => t('International articles'),
+    'local' => t('Search this website'),
+  );
+  $form['dab_search_radios'] = array(
+    '#type' => 'radios',
+    '#options' => $tabs,
+    '#required' => FALSE,
+    '#default_value' => 'catalogue',
+  );
+
+  $path = drupal_get_path('module', 'dab_search_radios');
+  drupal_add_css($path . '/css/dab_search_radios.css');
+  drupal_add_js($path . '/js/dab_search_radios.js');
+  drupal_add_js(array(
+    'dab_search_radios' => array(
+      'url' => variable_get('dab_search_radios_settings_search_url', 'http://minibib.hosted.exlibrisgroup.com/primo_library/libweb/action/search.do?fn=search'),
+      'catalogue' => variable_get('dab_search_radios_settings_library_catalogue', 'default_tab'),
+      'international' => variable_get('dab_search_radios_settings_international_articles', 'primo_central'),
+    ),
+  ), 'setting');
 }

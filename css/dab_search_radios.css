@@ -1,0 +1,12 @@
+#edit-dab-search-radios .form-item-dab-search-radios {
+  display: inline;
+  margin-right: 10px;
+}
+#edit-dab-search-radios .form-item-dab-search-radios input {
+  margin-right: 4px;
+  width: 16px;
+  height: 16px;
+}
+.search-field-in-content .form-item-dab-search-radios label {
+  color: #00b7e7;
+}

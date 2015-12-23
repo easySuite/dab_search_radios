@@ -1,0 +1,8 @@
+name = DAB Search Radios
+description = DAB add search radio buttons.
+core = 7.x
+package = DAB
+
+configure = admin/config/ding/dab-search
+
+files[] = dab_search_radios.admin.inc
