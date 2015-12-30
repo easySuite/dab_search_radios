@@ -11,11 +11,7 @@
        * Handler function to take care of the redirect. This is used in
        * multiple events.
        */
-      var event_handler = function(e) {
-        if (e.type === 'keydown' && e.which !== 13) {
-          return true;
-        }
-
+      var event_handler = function() {
         var chosen_search = $('#edit-dab-search-radios input[name=dab_search_radios]:checked').val(),
             query = $('#search-block-form input[type="text"]').val(),
             url = '/search/node/' + query;
@@ -34,7 +30,12 @@
 
       // Add the event handler to some events.
       $('#search-block-form input[type="submit"]').click(event_handler);
-      $('#search-block-form input[name="search_block_form"]').keydown(event_handler);
+      $('#search-block-form input[name="search_block_form"]').keydown(function (event) {
+        var keypressed = event.keyCode || event.which;
+        if (keypressed === 13) {
+          event_handler();
+        }
+      });
     }
   };
 })(jQuery);
