@@ -29,11 +29,12 @@ function dab_search_radios_form_search_block_form_alter(&$form, &$form_state, $f
     'international' => t('International articles'),
     'local' => t('Search this website'),
   );
+  $default_value = (arg(0) == 'search' && arg(1) == 'node') ? 'local' : 'catalogue';
   $form['dab_search_radios'] = array(
     '#type' => 'radios',
     '#options' => $tabs,
     '#required' => FALSE,
-    '#default_value' => 'catalogue',
+    '#default_value' => $default_value,
   );
 
   $path = drupal_get_path('module', 'dab_search_radios');
