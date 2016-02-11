@@ -18,8 +18,8 @@ function dab_search_radios_settings() {
   $form['dab_search_radios_settings_search']['dab_search_radios_settings_search_url'] = array(
     '#type' => 'textfield',
     '#title' => t('Search url'),
-    '#default_value' => variable_get('dab_search_radios_settings_search_url', 'http://minibib.hosted.exlibrisgroup.com/primo_library/libweb/action/search.do?fn=search'),
-    '#description' => t('Enter the URL where to provide search E.g. http://minibib.hosted.exlibrisgroup.com/primo_library/libweb/action/search.do?fn=search'),
+    '#default_value' => variable_get('dab_search_radios_settings_search_url', 'http://minibib.hosted.exlibrisgroup.com/primo_library/libweb/action/search.do'),
+    '#description' => t('Enter the URL where to provide search E.g. http://minibib.hosted.exlibrisgroup.com/primo_library/libweb/action/search.do'),
   );
   $form['dab_search_radios_search_tabs'] = array(
     '#type' => 'fieldset',
